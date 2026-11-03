@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090d18">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="NBA ALERT">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>NBA ALERT</title>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-ball">🏀</span><span>NBA <b>ALERT</b></span></a>
+    <div class="top-actions">
+      <span id="connection" class="connection"><i></i> Conectando</span>
+      <button id="notifyBtn" class="icon-btn" title="Ativar notificações" aria-label="Ativar notificações">🔔</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">ACOMPANHAMENTO AO VIVO</p>
+        <h1>Suas metas.<br><span>Seu jogo.</span></h1>
+        <p class="sub">Acompanhe estatísticas dos jogadores e receba um aviso quando baterem sua meta.</p>
+      </div>
+      <div class="hero-ball" aria-hidden="true">🏀</div>
+    </section>
+
+    <section class="stats-row">
+      <div class="stat-card"><small>METAS ATIVAS</small><strong id="activeCount">0</strong></div>
+      <div class="stat-card"><small>ATINGIDAS</small><strong id="hitCount">0</strong></div>
+      <div class="stat-card"><small>JOGOS HOJE</small><strong id="gamesCount">—</strong></div>
+    </section>
+
+    <section class="panel add-panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">NOVA NOTIFICAÇÃO</p><h2>Criar uma meta</h2></div>
+        <span class="plus">＋</span>
+      </div>
+      <div class="form-grid">
+        <label class="field wide">Jogo
+          <select id="gameSelect"><option value="">Carregando jogos...</option></select>
+        </label>
+        <label class="field wide">Jogador
+          <select id="playerSelect" disabled><option value="">Escolha um jogo primeiro</option></select>
+        </label>
+        <label class="field">Estatística
+          <select id="metricSelect">
+            <option value="PTS">Pontos</option>
+            <option value="REB">Rebotes</option>
+            <option value="AST">Assistências</option>
+            <option value="3PT">Cestas de 3</option>
+            <option value="STL">Roubos de bola</option>
+            <option value="BLK">Tocos</option>
+            <option value="TO">Turnovers</option>
+          </select>
+        </label>
+        <label class="field">Meta
+          <input id="targetInput" type="number" min="1" step="1" placeholder="Ex.: 25" inputmode="numeric">
+        </label>
+      </div>
+      <button id="addGoalBtn" class="primary-btn" disabled>＋ Adicionar meta</button>
+      <p class="hint" id="formHint">Escolha um jogo para carregar os jogadores disponíveis.</p>
+    </section>
+
+    <section class="goals-section">
+      <div class="section-heading goals-heading">
+        <div><p class="eyebrow">SEU PAINEL</p><h2>Metas acompanhadas</h2></div>
+        <button id="refreshBtn" class="refresh-btn">↻ Atualizar</button>
+      </div>
+      <div id="goalsList" class="goals-list"></div>
+    </section>
+
+    <section class="panel games-panel">
+      <div class="section-heading"><div><p class="eyebrow">NBA</p><h2>Placar de hoje</h2></div><span class="live-pill">● AO VIVO</span></div>
+      <div id="gamesList" class="games-list"><p class="empty">Buscando jogos...</p></div>
+    </section>
+
+    <footer>
+      <p>Dados esportivos fornecidos pela ESPN. Fonte pública não oficial, sem garantia de disponibilidade.</p>
+      <p>NBA ALERT · Versão gratuita de desenvolvimento</p>
+    </footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
